@@ -1,5 +1,5 @@
 // Supabase data access. Column names follow schema.sql (the deployed source of truth).
-import { supabase } from './supabase.js'
+import { supabase, requireSession } from './supabase.js'
 
 // ---- cases ----
 export async function listCases() {
@@ -84,6 +84,7 @@ export async function listAssessmentsWithGrounding(caseId) {
 }
 
 export async function updateAssessment(assessmentId, patch) {
+  await requireSession() // carry a fresh JWT so RLS doesn't reject the write (42501)
   // updated_at is maintained by the touch_updated_at trigger (schema.sql).
   const { data, error } = await supabase
     .from('assessments')
@@ -98,6 +99,7 @@ export async function updateAssessment(assessmentId, patch) {
 // Upsert a coach-authored field (Learning section, status 'manual') that has no AI draft.
 // Unique on (case_id, field_key) per schema.sql.
 export async function upsertManualAssessment({ caseId, fieldKey, model, value, status }) {
+  await requireSession() // carry a fresh JWT so RLS doesn't reject the INSERT (42501)
   const { data, error } = await supabase
     .from('assessments')
     .upsert(

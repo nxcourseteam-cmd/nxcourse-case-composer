@@ -18,3 +18,18 @@ export const supabase = createClient(url, anonKey, {
     detectSessionInUrl: true, // needed for magic-link callback
   },
 })
+
+// Ensure a live, valid session before a write. supabase-js attaches the session's JWT to
+// every request through this client, but an access token that expired while the coach was
+// reviewing (default ~1h) carries no valid auth.uid() — Postgres RLS then rejects the
+// INSERT/UPDATE with 42501 even though the case is owned by the user. getSession() refreshes
+// an expired token, so calling it right before a write guarantees the request carries a live
+// JWT (or we fail loudly with an actionable message instead of a cryptic RLS error).
+export async function requireSession() {
+  const { data, error } = await supabase.auth.getSession()
+  if (error) throw new Error(`Could not verify your sign-in: ${error.message}`)
+  if (!data?.session) {
+    throw new Error('Your session has expired — please sign in again, then retry the save.')
+  }
+  return data.session
+}

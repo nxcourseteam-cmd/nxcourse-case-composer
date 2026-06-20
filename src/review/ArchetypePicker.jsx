@@ -86,6 +86,8 @@ export default function ArchetypePicker({
         status: STATUS.MANUAL,
       })
     } catch (e) {
+      // Surface the real failure loudly — a silent error here looks like a successful save.
+      console.error(`Archetype save failed for ${selectionKey}:`, e)
       setErr(e.message || 'Save failed')
     } finally {
       setBusy(false)
@@ -101,6 +103,23 @@ export default function ArchetypePicker({
         <div className="spacer" />
         <Badge status={selection?.status} />
       </div>
+
+      {err && (
+        <div
+          role="alert"
+          style={{
+            background: 'var(--warn-tint)',
+            border: '1px solid var(--warn)',
+            borderRadius: 8,
+            padding: '10px 14px',
+            marginBottom: 12,
+            fontSize: 13.5,
+            color: 'var(--warn)',
+          }}
+        >
+          <strong>Not saved.</strong> {err}
+        </div>
+      )}
 
       {locked && (
         <div
@@ -209,12 +228,6 @@ export default function ArchetypePicker({
           </span>
         </label>
       </div>
-
-      {err && (
-        <div className="error-text" style={{ marginTop: 8 }}>
-          {err}
-        </div>
-      )}
 
       <div className="row" style={{ marginTop: 10 }}>
         <button className="btn btn-primary btn-sm" disabled={busy || !canSave} onClick={save}>
