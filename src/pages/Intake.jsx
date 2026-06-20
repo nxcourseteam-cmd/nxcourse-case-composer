@@ -9,7 +9,13 @@ import {
   deleteTranscript,
 } from '../lib/db.js'
 import { runExtract } from '../lib/api.js'
-import { CASE_MODES, TRANSCRIPT_PHASES, CASE_STATUS } from '../lib/constants.js'
+import {
+  CASE_MODES,
+  TRANSCRIPT_PHASES,
+  CASE_STATUS,
+  EXPERIENCE_LEVELS,
+  DEFAULT_EXPERIENCE_LEVEL,
+} from '../lib/constants.js'
 
 const countWords = (t) => (t ? t.trim().split(/\s+/).filter(Boolean).length : 0)
 
@@ -146,6 +152,7 @@ function ManageCase({ caseId, navigate }) {
   const [error, setError] = useState(null)
   const [extracting, setExtracting] = useState(false)
   const [extractMsg, setExtractMsg] = useState(null)
+  const [experienceLevel, setExperienceLevel] = useState(DEFAULT_EXPERIENCE_LEVEL)
 
   async function refresh() {
     const [c, ts] = await Promise.all([getCase(caseId), listTranscripts(caseId)])
@@ -198,6 +205,7 @@ function ManageCase({ caseId, navigate }) {
           phase: t.phase,
           text: t.raw_text,
         })),
+        experienceLevel,
         // omit model_keys → run all five passes (synthesis/program_design ordered last)
       })
       await updateCase(caseId, { status: CASE_STATUS.REVIEW })
@@ -260,6 +268,27 @@ function ManageCase({ caseId, navigate }) {
           Runs all five AI passes (Six Streams, Human Domains, Ten Ways, Synthesis, Program
           Design) and writes the drafted fields you'll review and correct.
         </p>
+        <div style={{ maxWidth: 420, marginBottom: 14 }}>
+          <label className="field-label" htmlFor="experience-level">
+            Writing register (coach experience level)
+          </label>
+          <select
+            id="experience-level"
+            value={experienceLevel}
+            onChange={(e) => setExperienceLevel(Number(e.target.value))}
+            disabled={extracting}
+          >
+            {EXPERIENCE_LEVELS.map((l) => (
+              <option key={l.value} value={l.value}>
+                {l.label}
+              </option>
+            ))}
+          </select>
+          <p className="muted" style={{ fontSize: 12, margin: '6px 0 0' }}>
+            Adjusts only the voice and depth of the prose — never the developmental
+            assessment, ratings, or grounding.
+          </p>
+        </div>
         {extractMsg && (
           <div
             style={{

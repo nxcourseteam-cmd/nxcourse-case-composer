@@ -27,6 +27,7 @@ export async function runExtract({
   phase,
   transcripts,
   modelKeys,
+  experienceLevel,
 }) {
   const body = {
     case_id: caseId,
@@ -39,6 +40,7 @@ export async function runExtract({
     })),
   }
   if (modelKeys && modelKeys.length) body.model_keys = modelKeys
+  if (experienceLevel != null) body.experience_level = experienceLevel
 
   const res = await fetch(`${EXTRACT_URL}/extract`, {
     method: 'POST',
