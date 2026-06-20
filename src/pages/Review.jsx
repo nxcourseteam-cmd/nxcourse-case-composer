@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import {
   getCase,
@@ -19,8 +19,25 @@ import SectionGroup from '../review/SectionGroup.jsx'
 import ReviewField from '../review/ReviewField.jsx'
 import CaseField from '../review/CaseField.jsx'
 import LearningField from '../review/LearningField.jsx'
+import ArchetypePicker from '../review/ArchetypePicker.jsx'
 
 const REVIEWED = new Set([STATUS.ACCEPTED, STATUS.EDITED])
+
+// Each narrative gets an archetype picker rendered directly above its metaphor field.
+// The selection is stored under a field_key the synthesis pass never emits, so a
+// regenerate refreshes `*_archetype_candidates` but leaves the coach's pick intact.
+const ARCHETYPE_PICKERS = {
+  narr_current_narrative: {
+    title: 'Current archetype',
+    candidatesKey: 'current_archetype_candidates',
+    selectionKey: 'narr_current_archetype',
+  },
+  narr_deeper_narrative: {
+    title: 'Deeper archetype',
+    candidatesKey: 'deeper_archetype_candidates',
+    selectionKey: 'narr_deeper_archetype',
+  },
+}
 
 export default function Review() {
   const { caseId } = useParams()
@@ -285,7 +302,7 @@ export default function Review() {
                     />
                   )
                 }
-                return (
+                const reviewField = (
                   <ReviewField
                     key={field.key}
                     field={field}
@@ -293,6 +310,22 @@ export default function Review() {
                     onPersist={persistAssessment}
                   />
                 )
+                const picker = ARCHETYPE_PICKERS[field.key]
+                if (picker) {
+                  return (
+                    <Fragment key={field.key}>
+                      <ArchetypePicker
+                        title={picker.title}
+                        candidatesRaw={assessments[picker.candidatesKey]?.value}
+                        selection={assessments[picker.selectionKey]}
+                        selectionKey={picker.selectionKey}
+                        onPersistManual={persistManual}
+                      />
+                      {reviewField}
+                    </Fragment>
+                  )
+                }
+                return reviewField
               })
             )}
           </SectionGroup>
