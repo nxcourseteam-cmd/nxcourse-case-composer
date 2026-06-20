@@ -12,6 +12,14 @@ import { STATUS } from '../lib/constants.js'
 // is structural — see Review.jsx / lib/api.js runExtract, which never sends them).
 const OTHER = '__other__'
 
+// The persisted value carries a printed label prefix (e.g. "Current Archetype: Busy Bee")
+// so it reads cleanly in the composed document; the picker works with the bare label.
+function stripPrefix(value, prefix) {
+  const v = (value || '').trim()
+  if (prefix && v.startsWith(prefix)) return v.slice(prefix.length).trim()
+  return v
+}
+
 function parseCandidates(raw) {
   if (!raw) return []
   try {
@@ -30,10 +38,11 @@ export default function ArchetypePicker({
   candidatesRaw,
   selection,
   selectionKey,
+  valuePrefix = '',
   onPersistManual,
 }) {
   const candidates = useMemo(() => parseCandidates(candidatesRaw), [candidatesRaw])
-  const locked = selection?.value?.trim() || ''
+  const locked = stripPrefix(selection?.value, valuePrefix)
   const lockedFromCandidates = candidates.some((c) => c.label === locked)
 
   // What the coach has selected in the UI: a candidate label, OR the OTHER sentinel.
@@ -72,7 +81,7 @@ export default function ArchetypePicker({
     setErr(null)
     try {
       await onPersistManual(selectionKey, {
-        value: pendingLabel,
+        value: `${valuePrefix}${pendingLabel}`,
         model: 'synthesis',
         status: STATUS.MANUAL,
       })

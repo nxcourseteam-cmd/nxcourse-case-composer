@@ -31,11 +31,13 @@ const ARCHETYPE_PICKERS = {
     title: 'Current archetype',
     candidatesKey: 'current_archetype_candidates',
     selectionKey: 'narr_current_archetype',
+    valuePrefix: 'Current Archetype: ',
   },
   narr_deeper_narrative: {
     title: 'Deeper archetype',
     candidatesKey: 'deeper_archetype_candidates',
     selectionKey: 'narr_deeper_archetype',
+    valuePrefix: 'Future Archetype: ',
   },
 }
 
@@ -319,6 +321,7 @@ export default function Review() {
                         candidatesRaw={assessments[picker.candidatesKey]?.value}
                         selection={assessments[picker.selectionKey]}
                         selectionKey={picker.selectionKey}
+                        valuePrefix={picker.valuePrefix}
                         onPersistManual={persistManual}
                       />
                       {reviewField}
