@@ -37,7 +37,7 @@ const ARCHETYPE_PICKERS = {
     title: 'Deeper archetype',
     candidatesKey: 'deeper_archetype_candidates',
     selectionKey: 'narr_deeper_archetype',
-    valuePrefix: 'Future Archetype: ',
+    valuePrefix: 'Deeper Archetype: ',
   },
 }
 
