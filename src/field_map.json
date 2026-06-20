@@ -1,0 +1,1117 @@
+{
+  "version": "1.0",
+  "template": "case_study_template.tagged.docx",
+  "delimiters": {
+    "start": "{{",
+    "end": "}}"
+  },
+  "fields": [
+    {
+      "key": "client_first_name",
+      "section": "overview",
+      "label": "Client's first name",
+      "source": "intake",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "program_dates",
+      "section": "overview",
+      "label": "Program start & end dates",
+      "source": "intake",
+      "model": null,
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "session_count",
+      "section": "overview",
+      "label": "Number of sessions",
+      "source": "intake",
+      "model": null,
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "session_frequency",
+      "section": "overview",
+      "label": "Session frequency",
+      "source": "intake",
+      "model": null,
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "session_duration",
+      "section": "overview",
+      "label": "Session duration (min)",
+      "source": "intake",
+      "model": null,
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "client_background",
+      "section": "overview",
+      "label": "Client's background (150-200w)",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "coaching_origin",
+      "section": "overview",
+      "label": "How coaching came about (75-100w)",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "presenting_issue",
+      "section": "overview",
+      "label": "Presenting issue (100-150w)",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "analysis_hd_domain_1",
+      "section": "analysis",
+      "label": "Domain 1: Individual experience & consciousness",
+      "source": "assessment",
+      "model": "human_domains",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "analysis_hd_domain_2",
+      "section": "analysis",
+      "label": "Domain 2: Body & behavior",
+      "source": "assessment",
+      "model": "human_domains",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "analysis_hd_domain_3",
+      "section": "analysis",
+      "label": "Domain 3: Culture & relationship",
+      "source": "assessment",
+      "model": "human_domains",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "analysis_hd_domain_4",
+      "section": "analysis",
+      "label": "Domain 4: Environment & systems",
+      "source": "assessment",
+      "model": "human_domains",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "ten_ways_way_of_being",
+      "section": "analysis",
+      "label": "Ten Ways: way of being",
+      "source": "assessment",
+      "model": "ten_ways",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "ten_ways_status",
+      "section": "analysis",
+      "label": "Ten Ways: status",
+      "source": "assessment",
+      "model": "ten_ways",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "ten_ways_grounding",
+      "section": "analysis",
+      "label": "Ten Ways: grounding",
+      "source": "assessment",
+      "model": "ten_ways",
+      "grounding": true,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_cognitive_skill",
+      "section": "analysis",
+      "label": "Six Streams cognitive: new skill",
+      "source": "assessment",
+      "model": "six_streams",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_cognitive_level",
+      "section": "analysis",
+      "label": "Six Streams cognitive: competence (NA/C/S)",
+      "source": "assessment",
+      "model": "six_streams",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_cognitive_grounding",
+      "section": "analysis",
+      "label": "Six Streams cognitive: grounding",
+      "source": "assessment",
+      "model": "six_streams",
+      "grounding": true,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_emotional_skill",
+      "section": "analysis",
+      "label": "Six Streams emotional: new skill",
+      "source": "assessment",
+      "model": "six_streams",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_emotional_level",
+      "section": "analysis",
+      "label": "Six Streams emotional: competence (NA/C/S)",
+      "source": "assessment",
+      "model": "six_streams",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_emotional_grounding",
+      "section": "analysis",
+      "label": "Six Streams emotional: grounding",
+      "source": "assessment",
+      "model": "six_streams",
+      "grounding": true,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_somatic_skill",
+      "section": "analysis",
+      "label": "Six Streams somatic: new skill",
+      "source": "assessment",
+      "model": "six_streams",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_somatic_level",
+      "section": "analysis",
+      "label": "Six Streams somatic: competence (NA/C/S)",
+      "source": "assessment",
+      "model": "six_streams",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_somatic_grounding",
+      "section": "analysis",
+      "label": "Six Streams somatic: grounding",
+      "source": "assessment",
+      "model": "six_streams",
+      "grounding": true,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_relational_skill",
+      "section": "analysis",
+      "label": "Six Streams relational: new skill",
+      "source": "assessment",
+      "model": "six_streams",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_relational_level",
+      "section": "analysis",
+      "label": "Six Streams relational: competence (NA/C/S)",
+      "source": "assessment",
+      "model": "six_streams",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_relational_grounding",
+      "section": "analysis",
+      "label": "Six Streams relational: grounding",
+      "source": "assessment",
+      "model": "six_streams",
+      "grounding": true,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_spiritual_skill",
+      "section": "analysis",
+      "label": "Six Streams spiritual: new skill",
+      "source": "assessment",
+      "model": "six_streams",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_spiritual_level",
+      "section": "analysis",
+      "label": "Six Streams spiritual: competence (NA/C/S)",
+      "source": "assessment",
+      "model": "six_streams",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_spiritual_grounding",
+      "section": "analysis",
+      "label": "Six Streams spiritual: grounding",
+      "source": "assessment",
+      "model": "six_streams",
+      "grounding": true,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_integrating_skill",
+      "section": "analysis",
+      "label": "Six Streams integrating: new skill",
+      "source": "assessment",
+      "model": "six_streams",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_integrating_level",
+      "section": "analysis",
+      "label": "Six Streams integrating: competence (NA/C/S)",
+      "source": "assessment",
+      "model": "six_streams",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_integrating_grounding",
+      "section": "analysis",
+      "label": "Six Streams integrating: grounding",
+      "source": "assessment",
+      "model": "six_streams",
+      "grounding": true,
+      "abbreviated": true
+    },
+    {
+      "key": "ss_priority_streams",
+      "section": "analysis",
+      "label": "Important streams to develop now",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "new_understanding",
+      "section": "integral_summary",
+      "label": "New unified understanding (150-200w)",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "coaching_topic",
+      "section": "integral_summary",
+      "label": "Coaching topic (<=3 words)",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "purpose",
+      "section": "integral_summary",
+      "label": "Program purpose",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "outcome_1",
+      "section": "integral_summary",
+      "label": "Outcome 1",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "outcome_2",
+      "section": "integral_summary",
+      "label": "Outcome 2",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "outcome_3",
+      "section": "integral_summary",
+      "label": "Outcome 3",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "purpose_outcomes_changes",
+      "section": "integral_summary",
+      "label": "Changes to purpose/outcomes",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "epq",
+      "section": "integral_summary",
+      "label": "Essential Positive Quality",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "epq_grounding",
+      "section": "integral_summary",
+      "label": "EPQ grounding",
+      "source": "synthesis",
+      "model": null,
+      "grounding": true,
+      "abbreviated": true
+    },
+    {
+      "key": "narr_current_narrative",
+      "section": "integral_summary",
+      "label": "Current narrative",
+      "source": "synthesis",
+      "model": "narrative_current",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "narr_current_who_am_i",
+      "section": "integral_summary",
+      "label": "Current: who am I?",
+      "source": "synthesis",
+      "model": "narrative_current",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "narr_current_who_are_others",
+      "section": "integral_summary",
+      "label": "Current: who are others?",
+      "source": "synthesis",
+      "model": "narrative_current",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "narr_current_what_is_mine",
+      "section": "integral_summary",
+      "label": "Current: what is mine to do?",
+      "source": "synthesis",
+      "model": "narrative_current",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "narr_current_physical",
+      "section": "integral_summary",
+      "label": "Current: physical surroundings",
+      "source": "synthesis",
+      "model": "narrative_current",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "narr_deeper_narrative",
+      "section": "integral_summary",
+      "label": "Deeper narrative",
+      "source": "synthesis",
+      "model": "narrative_deeper",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "narr_deeper_who_am_i",
+      "section": "integral_summary",
+      "label": "Deeper: who am I?",
+      "source": "synthesis",
+      "model": "narrative_deeper",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "narr_deeper_who_are_others",
+      "section": "integral_summary",
+      "label": "Deeper: who are others?",
+      "source": "synthesis",
+      "model": "narrative_deeper",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "narr_deeper_what_is_mine",
+      "section": "integral_summary",
+      "label": "Deeper: what is mine to do?",
+      "source": "synthesis",
+      "model": "narrative_deeper",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "narr_deeper_physical",
+      "section": "integral_summary",
+      "label": "Deeper: physical surroundings",
+      "source": "synthesis",
+      "model": "narrative_deeper",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "narr_current_epq_distorted",
+      "section": "integral_summary",
+      "label": "Current: EPQ distorted/limited",
+      "source": "synthesis",
+      "model": "narrative_current",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "narr_current_changes",
+      "section": "integral_summary",
+      "label": "Changes to narratives",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "narr_deeper_epq_expressed",
+      "section": "integral_summary",
+      "label": "Deeper: EPQ more fully expressed",
+      "source": "synthesis",
+      "model": "narrative_deeper",
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "design_hd_domain_1",
+      "section": "program_design",
+      "label": "Program domain 1: Individual experience & consciousness",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "design_hd_domain_2",
+      "section": "program_design",
+      "label": "Program domain 2: Body & behavior",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "design_hd_domain_3",
+      "section": "program_design",
+      "label": "Program domain 3: Culture & relationship",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "design_hd_domain_4",
+      "section": "program_design",
+      "label": "Program domain 4: Environment & systems",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "design_self_awareness_focus",
+      "section": "program_design",
+      "label": "Self Awareness: focus & instructions",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "design_self_awareness_reason",
+      "section": "program_design",
+      "label": "Self Awareness: reason for offering",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "design_practices_focus",
+      "section": "program_design",
+      "label": "Practices: focus & instructions",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "design_practices_reason",
+      "section": "program_design",
+      "label": "Practices: reason for offering",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "design_exercises_focus",
+      "section": "program_design",
+      "label": "Exercises: focus & instructions",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "design_exercises_reason",
+      "section": "program_design",
+      "label": "Exercises: reason for offering",
+      "source": "synthesis",
+      "model": null,
+      "grounding": false,
+      "abbreviated": true
+    },
+    {
+      "key": "distinction_1_what",
+      "section": "client_impact",
+      "label": "Distinction 1",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_1_how",
+      "section": "client_impact",
+      "label": "Distinction 1: how made",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_1_impact",
+      "section": "client_impact",
+      "label": "Distinction 1: impact on client",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_2_what",
+      "section": "client_impact",
+      "label": "Distinction 2",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_2_how",
+      "section": "client_impact",
+      "label": "Distinction 2: how made",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_2_impact",
+      "section": "client_impact",
+      "label": "Distinction 2: impact on client",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_3_what",
+      "section": "client_impact",
+      "label": "Distinction 3",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_3_how",
+      "section": "client_impact",
+      "label": "Distinction 3: how made",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_3_impact",
+      "section": "client_impact",
+      "label": "Distinction 3: impact on client",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_4_what",
+      "section": "client_impact",
+      "label": "Distinction 4",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_4_how",
+      "section": "client_impact",
+      "label": "Distinction 4: how made",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_4_impact",
+      "section": "client_impact",
+      "label": "Distinction 4: impact on client",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_5_what",
+      "section": "client_impact",
+      "label": "Distinction 5",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_5_how",
+      "section": "client_impact",
+      "label": "Distinction 5: how made",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_5_impact",
+      "section": "client_impact",
+      "label": "Distinction 5: impact on client",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_6_what",
+      "section": "client_impact",
+      "label": "Distinction 6",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_6_how",
+      "section": "client_impact",
+      "label": "Distinction 6: how made",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_6_impact",
+      "section": "client_impact",
+      "label": "Distinction 6: impact on client",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_7_what",
+      "section": "client_impact",
+      "label": "Distinction 7",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_7_how",
+      "section": "client_impact",
+      "label": "Distinction 7: how made",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_7_impact",
+      "section": "client_impact",
+      "label": "Distinction 7: impact on client",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_8_what",
+      "section": "client_impact",
+      "label": "Distinction 8",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_8_how",
+      "section": "client_impact",
+      "label": "Distinction 8: how made",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "distinction_8_impact",
+      "section": "client_impact",
+      "label": "Distinction 8: impact on client",
+      "source": "impact",
+      "model": "distinctions",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "breakdown_1_what",
+      "section": "client_impact",
+      "label": "Breakdown 1",
+      "source": "impact",
+      "model": "breakdowns",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "breakdown_1_how",
+      "section": "client_impact",
+      "label": "Breakdown 1: how addressed/resolved",
+      "source": "impact",
+      "model": "breakdowns",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "breakdown_2_what",
+      "section": "client_impact",
+      "label": "Breakdown 2",
+      "source": "impact",
+      "model": "breakdowns",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "breakdown_2_how",
+      "section": "client_impact",
+      "label": "Breakdown 2: how addressed/resolved",
+      "source": "impact",
+      "model": "breakdowns",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "breakdown_3_what",
+      "section": "client_impact",
+      "label": "Breakdown 3",
+      "source": "impact",
+      "model": "breakdowns",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "breakdown_3_how",
+      "section": "client_impact",
+      "label": "Breakdown 3: how addressed/resolved",
+      "source": "impact",
+      "model": "breakdowns",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "breakdown_4_what",
+      "section": "client_impact",
+      "label": "Breakdown 4",
+      "source": "impact",
+      "model": "breakdowns",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "breakdown_4_how",
+      "section": "client_impact",
+      "label": "Breakdown 4: how addressed/resolved",
+      "source": "impact",
+      "model": "breakdowns",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "breakdown_5_what",
+      "section": "client_impact",
+      "label": "Breakdown 5",
+      "source": "impact",
+      "model": "breakdowns",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "breakdown_5_how",
+      "section": "client_impact",
+      "label": "Breakdown 5: how addressed/resolved",
+      "source": "impact",
+      "model": "breakdowns",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "breakdown_6_what",
+      "section": "client_impact",
+      "label": "Breakdown 6",
+      "source": "impact",
+      "model": "breakdowns",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "breakdown_6_how",
+      "section": "client_impact",
+      "label": "Breakdown 6: how addressed/resolved",
+      "source": "impact",
+      "model": "breakdowns",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "impact_outcome_1_desired",
+      "section": "client_impact",
+      "label": "Outcome 1: desired",
+      "source": "impact",
+      "model": "impact_outcomes",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "impact_outcome_1_assessment",
+      "section": "client_impact",
+      "label": "Outcome 1: assessment",
+      "source": "impact",
+      "model": "impact_outcomes",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "impact_outcome_1_evidence",
+      "section": "client_impact",
+      "label": "Outcome 1: evidence",
+      "source": "impact",
+      "model": "impact_outcomes",
+      "grounding": true,
+      "abbreviated": false
+    },
+    {
+      "key": "impact_outcome_2_desired",
+      "section": "client_impact",
+      "label": "Outcome 2: desired",
+      "source": "impact",
+      "model": "impact_outcomes",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "impact_outcome_2_assessment",
+      "section": "client_impact",
+      "label": "Outcome 2: assessment",
+      "source": "impact",
+      "model": "impact_outcomes",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "impact_outcome_2_evidence",
+      "section": "client_impact",
+      "label": "Outcome 2: evidence",
+      "source": "impact",
+      "model": "impact_outcomes",
+      "grounding": true,
+      "abbreviated": false
+    },
+    {
+      "key": "impact_outcome_3_desired",
+      "section": "client_impact",
+      "label": "Outcome 3: desired",
+      "source": "impact",
+      "model": "impact_outcomes",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "impact_outcome_3_assessment",
+      "section": "client_impact",
+      "label": "Outcome 3: assessment",
+      "source": "impact",
+      "model": "impact_outcomes",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "impact_outcome_3_evidence",
+      "section": "client_impact",
+      "label": "Outcome 3: evidence",
+      "source": "impact",
+      "model": "impact_outcomes",
+      "grounding": true,
+      "abbreviated": false
+    },
+    {
+      "key": "additional_result_1_result",
+      "section": "client_impact",
+      "label": "Additional result 1",
+      "source": "impact",
+      "model": null,
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "additional_result_1_evidence",
+      "section": "client_impact",
+      "label": "Additional result 1: evidence",
+      "source": "impact",
+      "model": null,
+      "grounding": true,
+      "abbreviated": false
+    },
+    {
+      "key": "additional_result_2_result",
+      "section": "client_impact",
+      "label": "Additional result 2",
+      "source": "impact",
+      "model": null,
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "additional_result_2_evidence",
+      "section": "client_impact",
+      "label": "Additional result 2: evidence",
+      "source": "impact",
+      "model": null,
+      "grounding": true,
+      "abbreviated": false
+    },
+    {
+      "key": "additional_result_3_result",
+      "section": "client_impact",
+      "label": "Additional result 3",
+      "source": "impact",
+      "model": null,
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "additional_result_3_evidence",
+      "section": "client_impact",
+      "label": "Additional result 3: evidence",
+      "source": "impact",
+      "model": null,
+      "grounding": true,
+      "abbreviated": false
+    },
+    {
+      "key": "ten_ways_movement_way",
+      "section": "client_impact",
+      "label": "Ten Ways movement: way of being",
+      "source": "impact",
+      "model": "ten_ways_movement",
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "ten_ways_movement_grounding",
+      "section": "client_impact",
+      "label": "Ten Ways movement: grounding",
+      "source": "impact",
+      "model": "ten_ways_movement",
+      "grounding": true,
+      "abbreviated": false
+    },
+    {
+      "key": "learning_about_coaching",
+      "section": "learning",
+      "label": "What I learned about coaching",
+      "source": "reflection",
+      "model": null,
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "learning_about_self",
+      "section": "learning",
+      "label": "What I learned about myself",
+      "source": "reflection",
+      "model": null,
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "learning_differently",
+      "section": "learning",
+      "label": "What I would do differently",
+      "source": "reflection",
+      "model": null,
+      "grounding": false,
+      "abbreviated": false
+    },
+    {
+      "key": "learning_forward",
+      "section": "learning",
+      "label": "Learning I take forward",
+      "source": "reflection",
+      "model": null,
+      "grounding": false,
+      "abbreviated": false
+    }
+  ]
+}
