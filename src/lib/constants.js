@@ -60,17 +60,22 @@ export const TRANSCRIPT_PHASES = ['early', 'mid', 'late']
 
 export const CASE_MODES = ['full', 'abbreviated']
 
-// Writing-register / experience level passed to /extract (1–5). Controls only the
-// voice & explanatory depth of the prose, never the assessment itself. Default 3.
+// Coaching experience level / writing register, stored on the case as experience_level
+// and passed to /extract (1–5). Controls only the voice & explanatory depth of the
+// prose, never the assessment itself. Default 3.
 export const EXPERIENCE_LEVELS = [
-  { value: 1, label: '1 — Foundations-level (plain language, glossed terms)' },
-  { value: 2, label: '2 — Advanced beginner' },
-  { value: 3, label: '3 — Developing coach (default)' },
-  { value: 4, label: '4 — Proficient (fluent, peer level)' },
-  { value: 5, label: '5 — Experienced practitioner (dense, peer-to-peer)' },
+  { value: 1, short: 'Foundations', desc: 'Plain language, glossed terms' },
+  { value: 2, short: 'Advanced beginner', desc: 'Mostly plain, light glossing' },
+  { value: 3, short: 'Developing', desc: 'Standard coaching language (default)' },
+  { value: 4, short: 'Proficient', desc: 'Fluent, economical, peer level' },
+  { value: 5, short: 'Experienced practitioner', desc: 'Dense, sophisticated, peer-to-peer' },
 ]
 
 export const DEFAULT_EXPERIENCE_LEVEL = 3
+
+export const experienceLevel = (v) =>
+  EXPERIENCE_LEVELS.find((l) => l.value === Number(v)) ||
+  EXPERIENCE_LEVELS[DEFAULT_EXPERIENCE_LEVEL - 1]
 
 // Six Streams competence dropdown applies only to the six ss_*_level fields.
 export const isLevelField = (key) =>

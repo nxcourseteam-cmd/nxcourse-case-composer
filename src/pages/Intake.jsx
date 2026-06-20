@@ -13,9 +13,9 @@ import {
   CASE_MODES,
   TRANSCRIPT_PHASES,
   CASE_STATUS,
-  EXPERIENCE_LEVELS,
   DEFAULT_EXPERIENCE_LEVEL,
 } from '../lib/constants.js'
+import ExperienceLevelPicker from '../components/ExperienceLevelPicker.jsx'
 
 const countWords = (t) => (t ? t.trim().split(/\s+/).filter(Boolean).length : 0)
 
@@ -38,6 +38,7 @@ function CreateCase({ onCreated }) {
     session_frequency: '',
     session_duration: '',
     mode: 'full',
+    experience_level: DEFAULT_EXPERIENCE_LEVEL,
   })
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState(null)
@@ -56,6 +57,7 @@ function CreateCase({ onCreated }) {
         session_frequency: form.session_frequency || null,
         session_duration: form.session_duration ? Number(form.session_duration) : null,
         mode: form.mode,
+        experience_level: form.experience_level,
         status: CASE_STATUS.INTAKE,
       }
       const created = await createCase(payload)
@@ -129,6 +131,17 @@ function CreateCase({ onCreated }) {
               />
             </div>
           </div>
+          <div>
+            <label className="field-label">Coaching experience level</label>
+            <ExperienceLevelPicker
+              value={form.experience_level}
+              onChange={(v) => setForm((f) => ({ ...f, experience_level: v }))}
+            />
+            <p className="muted" style={{ fontSize: 12, margin: '6px 0 0' }}>
+              Sets the writing register for AI drafts — voice and depth only, never the
+              assessment. Can be changed before generating.
+            </p>
+          </div>
           {err && <div className="error-text">{err}</div>}
           <div className="row">
             <button className="btn btn-primary" type="submit" disabled={busy}>
@@ -152,7 +165,21 @@ function ManageCase({ caseId, navigate }) {
   const [error, setError] = useState(null)
   const [extracting, setExtracting] = useState(false)
   const [extractMsg, setExtractMsg] = useState(null)
-  const [experienceLevel, setExperienceLevel] = useState(DEFAULT_EXPERIENCE_LEVEL)
+  const [savingLevel, setSavingLevel] = useState(false)
+
+  // Persist the experience level on the case as the coach adjusts it.
+  async function changeLevel(level) {
+    setSavingLevel(true)
+    setError(null)
+    try {
+      const updated = await updateCase(caseId, { experience_level: level })
+      setCaseRow(updated)
+    } catch (e) {
+      setError(e.message || 'Could not update experience level')
+    } finally {
+      setSavingLevel(false)
+    }
+  }
 
   async function refresh() {
     const [c, ts] = await Promise.all([getCase(caseId), listTranscripts(caseId)])
@@ -205,7 +232,7 @@ function ManageCase({ caseId, navigate }) {
           phase: t.phase,
           text: t.raw_text,
         })),
-        experienceLevel,
+        experienceLevel: caseRow.experience_level ?? DEFAULT_EXPERIENCE_LEVEL,
         // omit model_keys → run all five passes (synthesis/program_design ordered last)
       })
       await updateCase(caseId, { status: CASE_STATUS.REVIEW })
@@ -268,22 +295,16 @@ function ManageCase({ caseId, navigate }) {
           Runs all five AI passes (Six Streams, Human Domains, Ten Ways, Synthesis, Program
           Design) and writes the drafted fields you'll review and correct.
         </p>
-        <div style={{ maxWidth: 420, marginBottom: 14 }}>
-          <label className="field-label" htmlFor="experience-level">
-            Writing register (coach experience level)
+        <div style={{ marginBottom: 16 }}>
+          <label className="field-label">
+            Coaching experience level{' '}
+            {savingLevel && <span className="muted">· saving…</span>}
           </label>
-          <select
-            id="experience-level"
-            value={experienceLevel}
-            onChange={(e) => setExperienceLevel(Number(e.target.value))}
-            disabled={extracting}
-          >
-            {EXPERIENCE_LEVELS.map((l) => (
-              <option key={l.value} value={l.value}>
-                {l.label}
-              </option>
-            ))}
-          </select>
+          <ExperienceLevelPicker
+            value={caseRow.experience_level ?? DEFAULT_EXPERIENCE_LEVEL}
+            onChange={changeLevel}
+            disabled={extracting || savingLevel}
+          />
           <p className="muted" style={{ fontSize: 12, margin: '6px 0 0' }}>
             Adjusts only the voice and depth of the prose — never the developmental
             assessment, ratings, or grounding.

@@ -13,6 +13,7 @@ import {
   SECTION_LABELS,
   STATUS,
   CASE_STATUS,
+  experienceLevel,
 } from '../lib/constants.js'
 import SectionGroup from '../review/SectionGroup.jsx'
 import ReviewField from '../review/ReviewField.jsx'
@@ -184,6 +185,10 @@ export default function Review() {
           </h1>
           <div className="row muted" style={{ fontSize: 13, gap: 14, marginTop: 4 }}>
             <span>Mode: {caseRow.mode}</span>
+            <span>
+              Register: Level {experienceLevel(caseRow.experience_level).value} —{' '}
+              {experienceLevel(caseRow.experience_level).short}
+            </span>
             <span>Status: {caseRow.status}</span>
             <span>
               Reviewed {reviewed}/{reviewable.length} drafted fields
