@@ -55,12 +55,29 @@ export async function runExtract({
 }
 
 /**
+ * Build a download filename for a composed case: {first_name}_{YYYY-MM-DD}_case_study.docx.
+ * Built in the UI because the compose service is cross-origin and its
+ * Content-Disposition filename isn't readable from a fetch() response.
+ * The name is sanitized to letters/digits (spaces and special characters collapse
+ * to underscores) so it's always a safe filename.
+ */
+export function buildCaseFilename(clientFirstName) {
+  const safeName =
+    (clientFirstName || '')
+      .trim()
+      .replace(/[^a-zA-Z0-9]+/g, '_')
+      .replace(/^_+|_+$/g, '') || 'client'
+  const date = new Date().toISOString().slice(0, 10) // YYYY-MM-DD (today, local UTC date)
+  return `${safeName}_${date}_case_study.docx`
+}
+
+/**
  * POST /compose-case — render the finished Word document for a case.
  * This endpoint lives on the extract-service (HANDOFF §1): it reads the case's
  * assessments and calls compose-docx server-side. Returns a Blob ready to download.
  * (VITE_COMPOSE_URL points at compose-docx's direct /compose, kept for future use.)
  */
-export async function composeCase(caseId) {
+export async function composeCase(caseId, clientFirstName) {
   const res = await fetch(`${EXTRACT_URL}/compose-case`, {
     method: 'POST',
     headers: await authHeaders(),
@@ -71,10 +88,7 @@ export async function composeCase(caseId) {
     throw new Error(`Compose failed (${res.status}): ${detail || res.statusText}`)
   }
   const blob = await res.blob()
-  // Prefer the server-provided filename if present.
-  const disposition = res.headers.get('Content-Disposition') || ''
-  const match = disposition.match(/filename="?([^"]+)"?/)
-  const filename = match ? match[1] : 'case_study.docx'
+  const filename = buildCaseFilename(clientFirstName)
   return { blob, filename }
 }
 

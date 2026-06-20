@@ -136,7 +136,7 @@ export default function Review() {
     setComposing(true)
     setError(null)
     try {
-      const { blob, filename } = await composeCase(caseId)
+      const { blob, filename } = await composeCase(caseId, caseRow?.client_first_name)
       triggerDownload(blob, filename)
       setComposed({ blob, filename })
       // Optionally mark the case rendered (HANDOFF §4D).
